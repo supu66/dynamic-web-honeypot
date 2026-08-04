@@ -1,0 +1,61 @@
+<div class="employee-card">
+
+    <div class="employee-avatar-wrapper">
+
+        <img
+            src="{{ url_for('static', filename=employee.image)}}"
+            alt="{{ employee.name }}"
+            class="employee-avatar"
+        >
+
+    </div>
+
+    <div class="employee-info">
+
+        <h3>{{ employee.name }}</h3>
+
+        <p class="employee-title">
+            {{ employee.title }}
+        </p>
+
+        <div class="employee-meta">
+
+            <p>
+
+                <strong>{{ department_icon }} Department</strong><br>
+
+                {{ employee.department }}
+
+            </p>
+
+            <p>
+                <strong>📧 Email</strong><br>
+                {{ employee.email }}
+            </p>
+
+            <p>
+                <strong>☎ Extension</strong><br>
+                {{ employee.extension }}
+            </p>
+
+        </div>
+
+        <span class="status {{ employee.status_class }}">
+            {{ employee.status }}
+        </span>
+
+        <div class="employee-actions">
+
+            <a
+             href="{{ url_for('main.employee_profile', employee_id=employee.id) }}"
+                class="profile-btn">
+
+                View Profile →
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>

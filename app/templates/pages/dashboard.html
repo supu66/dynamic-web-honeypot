@@ -1,0 +1,156 @@
+```html
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="dashboard-section">
+
+    <div class="container">
+
+     
+        <div class="dashboard-header">
+
+            <div>
+
+                <span class="employee-role">
+                    🛡️ Security Operations Center
+                </span>
+
+                <h1>
+                    Welcome back, {{ session['employee'] }}
+                </h1>
+
+                <p>
+                    Employee ID:
+                    <strong>ATH-EMP-0247</strong>
+                </p>
+
+                <p>
+                    Last Login:
+                    August 3, 2026 • 09:15 AM
+                </p>
+
+            </div>
+
+            <a href="{{ url_for('main.logout') }}"
+               class="btn btn-outline-dark">
+                Logout
+            </a>
+
+        </div>
+
+       
+        <div class="dashboard-layout">
+
+           
+            <aside class="dashboard-sidebar">
+
+                <h3>Aetheris Portal</h3>
+
+                <nav class="sidebar-nav">
+
+                    <a href="#" class="active">
+                        🏠 Dashboard
+                    </a>
+
+                    <a href="#">
+                        📢 Announcements
+                    </a>
+
+                    <a href="#">
+                        📁 Resources
+                    </a>
+
+                    <a href="{{ url_for('main.documents') }}">
+                        📄 Documents
+                    </a>
+
+                    <a href="{{ url_for('main.directory') }}">
+                        👥 Employee Directory
+                    </a>
+
+                    <a href="#">
+                        🎫 IT Support
+                    </a>
+
+                    <a href="#">
+                        ⚙️ Settings
+                    </a>
+
+                    <a href="{{ url_for('main.logout') }}">
+                        🚪 Logout
+                    </a>
+
+                </nav>
+
+            </aside>
+
+            
+            <div class="dashboard-content">
+
+                <div class="dashboard-main">
+
+               
+                    <div class="dashboard-cards">
+
+                        <div class="dashboard-card">
+                            <h2>24</h2>
+                            <p>Successful Logins</p>
+                        </div>
+
+                        <div class="dashboard-card">
+                            <h2>6</h2>
+                            <p>Failed Logins</p>
+                        </div>
+
+                        <div class="dashboard-card">
+                            <h2>3</h2>
+                            <p>Security Alerts</p>
+                        </div>
+
+                        <div class="dashboard-card">
+                            <h2>92</h2>
+                            <p>Visitors Today</p>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+            
+            <aside class="dashboard-right">
+
+                <h3>🚨 Active Security Alerts</h3>
+
+                    <div class="alert-card">
+                        <strong>⚠ SQL Injection</strong><br>
+                        Severity: High
+                    </div>
+
+                    <div class="alert-card">
+                        <strong>⚠ Brute Force Login</strong><br>
+                        Severity: Medium
+                    </div>
+
+                    <div class="alert-card">
+                        <strong>⚠ Cross-Site Scripting (XSS)</strong><br>
+                        Severity: High
+                    </div>
+
+                    <div class="alert-card">
+                        <strong>⚠ Directory Traversal</strong><br>
+                        Severity: Medium
+                    </div>
+            </aside>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
+```

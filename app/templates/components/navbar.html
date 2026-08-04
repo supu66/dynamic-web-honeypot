@@ -1,0 +1,90 @@
+<header>
+    <div class="container">
+
+        <nav class="navbar">
+
+            <div class="logo">
+                <a href="{{ url_for('main.home') }}">
+                    <span class="logo-text">Aetheris Technologies</span>
+                </a>
+            </div>
+
+          
+            <ul class="nav-links">
+
+                <li>
+                    <a href="{{ url_for('main.home') }}"
+                        class="{% if request.endpoint == 'main.home' %}active{% endif %}">
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ url_for('main.about') }}"
+                        class="{% if request.endpoint == 'main.about' %}active{% endif %}">
+                        About
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ url_for('main.services') }}"
+                        class="{% if request.endpoint == 'main.services' %}active{% endif %}">
+                        Services
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ url_for('main.careers') }}"
+                        class="{% if request.endpoint == 'main.careers' %}active{% endif %}">
+                        Careers
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ url_for('main.contact') }}"
+                        class="{% if request.endpoint == 'main.contact' %}active{% endif %}">
+                        Contact
+                    </a>
+                </li>
+
+           
+                <li>
+                    <a href="{{ url_for('main.employee_profile', employee_id='sophia-chen') }}"
+                        class="{% if request.endpoint == 'main.employee_profile' %}active{% endif %}">
+                            Profile
+                        </a>
+                </li>
+
+            </ul>
+
+         
+            <div class="nav-actions">
+
+                <div class="theme-switch">
+
+                    <span>🌙</span>
+
+                    <label class="switch">
+
+                        <input type="checkbox" id="theme-toggle">
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                    <span>☀️</span>
+
+                </div>
+
+                <a href="{{ url_for('main.login') }}"
+                class="btn btn-primary">
+
+                    Employee Login
+
+                </a>
+
+            </div>
+
+        </nav>
+    </div>
+</header>

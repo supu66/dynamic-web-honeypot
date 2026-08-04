@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="dashboard-section">
+
+    <div class="container">
+
+        <h1>{{ employee.name }}</h1>
+
+        <h3>{{ employee.title }}</h3>
+
+        <p>{{ employee.department }}</p>
+
+        <p>{{ employee.email }}</p>
+
+    </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 600 500">
+
+    <defs>
+
+        <linearGradient id="shieldGradient"
+                        x1="0%"
+                        y1="0%"
+                        x2="100%"
+                        y2="100%">
+
+            <stop offset="0%" stop-color="#1f6feb"/>
+            <stop offset="100%" stop-color="#0a1f44"/>
+
+        </linearGradient>
+
+    </defs>
+
+    <!-- Background Circle -->
+
+    <circle
+        cx="300"
+        cy="250"
+        r="180"
+        fill="#eef5ff"/>
+
+    <!-- Network Lines -->
+
+    <line x1="160" y1="140" x2="300" y2="210"
+          stroke="#8fb8ff"
+          stroke-width="4"/>
+
+    <line x1="440" y1="140" x2="300" y2="210"
+          stroke="#8fb8ff"
+          stroke-width="4"/>
+
+    <line x1="160" y1="360" x2="300" y2="290"
+          stroke="#8fb8ff"
+          stroke-width="4"/>
+
+    <line x1="440" y1="360" x2="300" y2="290"
+          stroke="#8fb8ff"
+          stroke-width="4"/>
+
+    <!-- Nodes -->
+
+    <circle cx="160" cy="140" r="10" fill="#1f6feb"/>
+    <circle cx="440" cy="140" r="10" fill="#1f6feb"/>
+    <circle cx="160" cy="360" r="10" fill="#1f6feb"/>
+    <circle cx="440" cy="360" r="10" fill="#1f6feb"/>
+
+    <!-- Shield -->
+
+    <path
+        d="M300 140
+           L380 170
+           L370 270
+           C365 335 325 375 300 390
+           C275 375 235 335 230 270
+           L220 170
+           Z"
+
+        fill="url(#shieldGradient)"
+    />
+
+    <!-- Lock Body -->
+
+    <rect
+        x="270"
+        y="220"
+        width="60"
+        height="70"
+        rx="10"
+        fill="white"/>
+
+    <!-- Lock Arc -->
+
+    <path
+        d="M285 220
+           V195
+           C285 175 315 175 315 195
+           V220"
+
+        stroke="white"
+        stroke-width="10"
+        fill="none"/>
+
+    <!-- Keyhole -->
+
+    <circle
+        cx="300"
+        cy="250"
+        r="6"
+        fill="#0a1f44"/>
+
+    <rect
+        x="297"
+        y="255"
+        width="6"
+        height="15"
+        fill="#0a1f44"/>
+
+    <!-- Decorative Ring -->
+
+    <circle
+        cx="300"
+        cy="250"
+        r="170"
+        fill="none"
+        stroke="#d8e8ff"
+        stroke-width="6"
+        stroke-dasharray="10 12"/>
+
+</svg>

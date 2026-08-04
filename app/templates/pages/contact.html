@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %}Contact | Aetheris Technologies{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+    <div class="container">
+        <h1>Contact Us</h1>
+        <p>
+            We'd love to hear from you. Reach out to our team for inquiries,
+            partnerships, or general information.
+        </p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>Head Office</h3>
+                <p>
+                    Aetheris Technologies<br>
+                    Innovation Business Park<br>
+                    Silicon Avenue
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Email</h3>
+                <p>
+                    contact@aetheristech.com
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Phone</h3>
+                <p>
+                    +1 (555) 123-4567
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+
+        <h2>Send Us a Message</h2>
+
+        <form>
+
+            <input
+                type="text"
+                placeholder="Your Name"
+                required
+            >
+
+            <input
+                type="email"
+                placeholder="Email Address"
+                required
+            >
+
+            <textarea
+                rows="6"
+                placeholder="Your Message"
+                required
+            ></textarea>
+
+            <button class="btn btn-primary">
+                Send Message
+            </button>
+
+        </form>
+
+    </div>
+</section>
+
+{% endblock %}

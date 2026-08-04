@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %}Careers | Aetheris Technologies{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+    <div class="container">
+        <h1>Careers at Aetheris Technologies</h1>
+        <p>
+            Join a team passionate about innovation, cybersecurity,
+            and building secure digital solutions.
+        </p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+
+        <h2>Why Join Us?</h2>
+
+        <p>
+            At Aetheris Technologies, we believe that great technology begins
+            with talented people. We foster a collaborative environment where
+            innovation, continuous learning, and professional growth are
+            encouraged.
+        </p>
+
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+
+        <h2>Current Opportunities</h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>Software Engineer</h3>
+                <p>
+                    Develop secure, scalable, and modern web applications.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Cybersecurity Analyst</h3>
+                <p>
+                    Research security threats and strengthen defensive systems.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Cloud Engineer</h3>
+                <p>
+                    Design and manage reliable cloud infrastructure solutions.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+
+        <h2>Work With Us</h2>
+
+        <p>
+            We are always looking for motivated professionals who enjoy solving
+            challenging problems and building secure technology solutions.
+        </p>
+
+        <p>
+            <a href="{{ url_for('main.contact') }}" class="btn btn-primary">
+                Contact Our Team
+            </a>
+        </p>
+
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="login-section">
+
+    <div class="container">
+
+        <div class="login-card">
+
+            <h1>Corporate File Upload Portal</h1>
+
+            <p>Internal Document Submission System</p>
+
+            <form>
+
+                <div class="form-group">
+
+                    <label>Select File</label>
+
+                    <input type="file">
+
+                </div>
+
+                <button
+                    type="submit"
+                    class="btn btn-primary">
+
+                    Upload File
+
+                </button>
+
+            </form>
+
+            <p style="margin-top:20px;color:#888;">
+                Supported formats: PDF, DOCX, XLSX
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

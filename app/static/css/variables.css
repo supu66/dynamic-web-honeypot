@@ -1,0 +1,34 @@
+:root {
+
+    /* ==========================
+       Aetheris Brand Colors
+       ========================== */
+
+    --primary-color: #0a1f44;
+    --secondary-color: #1f6feb;
+    --accent-color: #00c2ff;
+
+
+    /* ==========================
+       Background Colors
+       ========================== */
+
+    --background-color: #f8fafc;
+    --surface-color: #ffffff;
+
+
+    /* ==========================
+       Text Colors
+       ========================== */
+
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+
+
+    /* ==========================
+       Typography
+       ========================== */
+
+    --font-main: "Inter", Arial, sans-serif;
+
+}

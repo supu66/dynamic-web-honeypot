@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="dashboard-section">
+
+    <div class="container">
+
+        <div class="dashboard-header">
+
+            <div>
+
+                <span class="employee-role">
+                    🛡️ Security Operations Center
+                </span>
+
+                <h1>Administrator Dashboard</h1>
+
+                <p>
+                    Welcome, <strong>{{ session['admin'] }}</strong>
+                </p>
+
+            </div>
+
+            <a href="{{ url_for('admin.logout') }}"
+               class="btn btn-outline-dark">
+                    Logout
+            </a>
+
+            <a href="{{ url_for('admin.monitor') }}"
+                class="btn btn-primary">
+                    📡 Open Live Monitor
+                </a>
+
+        </div>
+
+
+        <div class="dashboard-cards">
+
+            <div class="dashboard-card">
+                <h2>{{ security_stats.attacks_today }}</h2>
+                <p>Today's Attacks</p>
+            </div>
+
+            <div class="dashboard-card">
+                <h2>{{ security_stats.suspicious_ips }}</h2>
+                <p>Suspicious IPs</p>
+            </div>
+
+            <div class="dashboard-card">
+                <h2>{{ security_stats.blocked_ips }}</h2>
+                <p>Blocked IPs</p>
+            </div>
+
+            <div class="dashboard-card">
+                <h2>{{ security_stats.alerts }}</h2>
+                <p>Security Alerts</p>
+            </div>
+
+        </div>
+
+        <div style="margin:30px 0;">
+
+            <a href="{{ url_for('admin.monitor') }}"
+            class="btn btn-primary">
+
+                📡 Open Live Monitor
+
+            </a>
+
+        </div>
+
+
+        <h2 style="margin-top:40px;">
+            Recent Login Activity
+        </h2>
+
+        <table class="security-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>Time</th>
+                    <th>Activity</th>
+                    <th>Status</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for log in login_logs %}
+
+                <tr>
+
+                    <td>{{ log.time }}</td>
+
+                    <td>{{ log.event }}</td>
+
+                    <td>{{ log.status }}</td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+
+        <h2 style="margin-top:40px;">
+            Honeypot Attack Logs
+        </h2>
+
+        <table class="security-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>IP Address</th>
+                    <th>Attack</th>
+                    <th>Risk</th>
+                    <th>Status</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for attack in attack_logs %}
+
+                <tr>
+
+                    <td>{{ attack.ip }}</td>
+
+                    <td>{{ attack.attack }}</td>
+
+                    <td>{{ attack.risk }}</td>
+
+                    <td>{{ attack.status }}</td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+{% endblock %}

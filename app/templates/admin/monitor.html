@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="dashboard-section">
+
+    <div class="container">
+
+        <div class="dashboard-header">
+
+            <div>
+
+                <span class="employee-role">
+                    🛡️ Honeypot Monitoring
+                </span>
+
+                <h1>Live Request Monitor</h1>
+
+                <p>
+                    Real-time monitoring of all incoming HTTP requests.
+                </p>
+
+            </div>
+
+            <a href="{{ url_for('admin.dashboard') }}"
+               class="btn btn-outline-dark">
+
+                ← Dashboard
+
+            </a>
+
+        </div>
+
+        <table class="security-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>Time</th>
+                    <th>IP Address</th>
+                    <th>Method</th>
+                    <th>URL</th>
+                    <th>Risk</th>
+                    <th>Attack Type</th>
+                    <th>User Agent</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for log in request_logs|reverse %}
+
+                <tr>
+
+                    <td>{{ log.time }}</td>
+
+                    <td>{{ log.ip }}</td>
+
+                    <td>{{ log.method }}</td>
+
+                    <td>{{ log.path }}</td>
+
+                    <td>
+
+                        {% if log.risk == "High" %}
+
+                            🔴 <strong>{{ log.risk }}</strong>
+
+                        {% else %}
+
+                            🟢 {{ log.risk }}
+
+                        {% endif %}
+
+                    </td>
+
+                    <td>{{ log.attack }}</td>
+
+                    <td>{{ log.user_agent }}</td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+{% endblock %}
