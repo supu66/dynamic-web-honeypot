@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="login-section">
+
+    <div class="container">
+
+        <div class="login-card">
+
+            <div class="login-logo">
+                📁
+            </div>
+
+            <h1>Secure File Upload</h1>
+
+            <p class="login-subtitle">
+                Internal Employee Document Portal
+            </p>
+
+            <p class="login-description">
+                Upload project documents for secure processing.
+            </p>
+
+            {% if success %}
+
+                <div class="success-message">
+
+                    File uploaded successfully.<br>
+                    Your document is being processed.
+
+                </div>
+
+            {% endif %}
+
+            <form
+                method="POST"
+                enctype="multipart/form-data">
+
+                <input
+                    type="file"
+                    name="file"
+                    required>
+
+                <br><br>
+
+                <button
+                    class="btn btn-primary"
+                    type="submit">
+
+                    Upload File
+
+                </button>
+
+            </form>
+
+            <br>
+
+            <div class="login-footer">
+
+                Supported file types:
+                PDF, DOCX, XLSX, ZIP
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

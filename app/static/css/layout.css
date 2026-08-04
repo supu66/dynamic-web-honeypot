@@ -102,52 +102,15 @@ footer {
     max-width: 500px;
 }
 
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    color: white;
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 30px;
-    margin: 0;
-    padding: 0;
-}
-
-.nav-links a {
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-    padding-bottom: 4px;
-    border-bottom: 2px solid transparent;
-    transition: color 0.3s ease, border-color 0.3s ease;
-}
-
-.nav-links a:hover {
-    color: var(--accent-color);
-    border-bottom-color: var(--accent-color);
-}
-
-.nav-links a.active {
-    color: var(--accent-color);
-    font-weight: 700;
-    border-bottom: 2px solid var(--accent-color);
-    padding-bottom: 4px;
-}
+/* ==========================
+   NAVBAR
+========================== */
 
 .navbar{
     display:flex;
     justify-content:space-between;
     align-items:center;
+    min-height:70px;
 }
 
 .logo a{
@@ -155,27 +118,42 @@ footer {
 }
 
 .logo-text{
-    color:white;
+    color:#fff;
     font-size:1.4rem;
     font-weight:700;
 }
 
+.menu-toggle{
+    display:none;
+    background:none;
+    border:none;
+    color:#fff;
+    font-size:30px;
+    cursor:pointer;
+}
+
 .nav-links{
     display:flex;
+    align-items:center;
     gap:30px;
     list-style:none;
     margin:0;
     padding:0;
 }
 
-.nav-links a{
-    color:white;
-    text-decoration:none;
-    font-weight:500;
-    transition:0.3s;
+.nav-links li{
+    list-style:none;
 }
 
-.nav-links a:hover{
+.nav-links a{
+    color:#fff;
+    text-decoration:none;
+    font-weight:500;
+    transition:.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active{
     color:var(--accent-color);
 }
 
@@ -183,3 +161,93 @@ footer {
     display:flex;
     align-items:center;
 }
+
+.desktop-login{
+    display:flex;
+    align-items:center;
+}
+
+.mobile-login{
+    display:none;
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media (max-width:768px){
+
+    .navbar{
+
+        position:relative;
+
+        display:flex;
+
+        justify-content:space-between;
+
+        align-items:center;
+
+    }
+
+    .menu-toggle{
+
+        display:block;
+
+        background:none;
+
+        border:none;
+
+        color:white;
+
+        font-size:30px;
+
+        cursor:pointer;
+
+    }
+
+    .nav-links{
+
+        display:none;
+
+        position:absolute;
+
+        top:100%;
+
+        left:0;
+
+        width:100%;
+
+        background:var(--primary-color);
+
+        flex-direction:column;
+
+        align-items:center;
+
+        gap:20px;
+
+        padding:25px 0;
+
+    }
+
+    .nav-links.show{
+
+        display:flex;
+
+    }
+
+    .logo-text{
+
+        font-size:1.1rem;
+
+    }
+
+    .desktop-login{
+    display:none;
+    }
+
+    .mobile-login{
+        display:block;
+    }
+
+}
+

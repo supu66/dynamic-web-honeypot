@@ -1,3 +1,6 @@
+import os
+from app.data.employees import employees
+from app.utils.logger import log_request
 from app.data.security_logs import (
     login_logs,
     attack_logs,
@@ -13,7 +16,6 @@ from flask import (
     session
 )
 
-from app.data.employees import employees
 
 EMPLOYEE_ACCOUNT = {
 
@@ -107,6 +109,8 @@ def dashboard():
         security_stats=security_stats
     )
 
+
+
 @main_bp.route("/logout")
 def logout():
 
@@ -187,3 +191,80 @@ def employee_profile(employee_id):
         employee=employee
 
     )
+
+@main_bp.route("/file-upload", methods=["GET", "POST"])
+def file_upload():
+
+    if request.method == "POST":
+
+        uploaded_file = request.files.get("file")
+
+        if uploaded_file:
+
+            print(
+                f"[HONEYPOT] Upload Attempt: "
+                f"{uploaded_file.filename} "
+                f"from {request.remote_addr}"
+            )
+
+        return render_template(
+            "pages/file_upload.html",
+            success=True
+        )
+
+    return render_template(
+        "pages/file_upload.html"
+    )
+
+@main_bp.route("/secure/login", methods=["GET", "POST"])
+def secure_login():
+
+    if request.method == "POST":
+
+        username = request.form.get("username")
+        password = request.form.get("password")
+
+        log_request(
+            ip=request.remote_addr,
+            method=request.method,
+            path=f"/secure/login | Username={username}",
+            user_agent=request.headers.get("User-Agent")
+        )
+
+        return render_template(
+            "pages/secure_login.html",
+            error="Invalid username or password."
+        )
+
+    return render_template(
+        "pages/secure_login.html"
+    )
+
+@main_bp.route("/admin")
+def fake_admin():
+    return render_template("pages/fake_admin.html")
+
+
+@main_bp.route("/administrator")
+def fake_administrator():
+    return render_template("pages/fake_admin.html")
+
+
+@main_bp.route("/cpanel")
+def fake_cpanel():
+    return render_template("pages/fake_cpanel.html")
+
+
+@main_bp.route("/webmail")
+def fake_webmail():
+    return render_template("pages/fake_webmail.html")
+
+
+@main_bp.route("/.env")
+def fake_env():
+    return render_template("pages/fake_env.html")
+
+
+@main_bp.route("/backup.zip")
+def fake_backup():
+    return render_template("pages/fake_backup.html")

@@ -1,9 +1,21 @@
 @media(max-width:768px){
 
-    nav {
-        display:flex;
-        flex-direction:column;
+    .navbar{
+    flex-direction:row;
+    justify-content:space-between;
+    align-items:center;
+    }
 
+    .menu-toggle{
+        display:block;
+    }
+
+    .nav-links{
+        display:none;
+    }
+
+    .nav-links.show{
+        display:flex;
     }
 
     .container {
