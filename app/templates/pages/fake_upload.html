@@ -8,17 +8,49 @@
 
         <div class="login-card">
 
+            <div class="login-logo">
+                📁
+            </div>
+
             <h1>Corporate File Upload Portal</h1>
 
-            <p>Internal Document Submission System</p>
+            <p class="login-subtitle">
+                Internal Document Submission System
+            </p>
 
-            <form>
+            <p class="login-description">
+                Upload corporate documents for internal processing.
+            </p>
+
+            {% if message %}
+                <p class="success">
+                    {{ message }}
+                </p>
+            {% endif %}
+
+            {% if error %}
+                <p class="error">
+                    {{ error }}
+                </p>
+            {% endif %}
+
+            <form
+                method="POST"
+                enctype="multipart/form-data"
+            >
 
                 <div class="form-group">
 
-                    <label>Select File</label>
+                    <label for="file">
+                        Select File
+                    </label>
 
-                    <input type="file">
+                    <input
+                        type="file"
+                        id="file"
+                        name="file"
+                        required
+                    >
 
                 </div>
 
@@ -35,6 +67,13 @@
             <p style="margin-top:20px;color:#888;">
                 Supported formats: PDF, DOCX, XLSX
             </p>
+
+            <div class="login-footer">
+
+                All uploaded files are subject to
+                security inspection.
+
+            </div>
 
         </div>
 

@@ -126,3 +126,54 @@
     }
 
 }
+
+/* ==========================
+   MOBILE SECURITY TABLE
+========================== */
+
+@media (max-width: 768px) {
+
+    .security-table-wrapper {
+
+        width: 100%;
+
+        overflow-x: auto;
+
+        -webkit-overflow-scrolling: touch;
+
+    }
+
+    .security-table {
+
+        min-width: 900px;
+
+    }
+
+    .security-table th,
+    .security-table td {
+
+        white-space: nowrap;
+
+    }
+
+    .security-table .log-path {
+
+        max-width: 250px;
+
+        overflow: hidden;
+
+        text-overflow: ellipsis;
+
+    }
+
+    .security-table .user-agent {
+
+        max-width: 300px;
+
+        overflow: hidden;
+
+        text-overflow: ellipsis;
+
+    }
+
+}

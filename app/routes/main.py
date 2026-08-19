@@ -1,6 +1,6 @@
 import os
 from app.data.employees import employees
-from app.utils.logger import log_request
+from app.security.logger import log_request
 from app.data.security_logs import (
     login_logs,
     attack_logs,
@@ -15,7 +15,6 @@ from flask import (
     url_for,
     session
 )
-
 
 EMPLOYEE_ACCOUNT = {
 
@@ -156,8 +155,28 @@ def fake_phpmyadmin():
         "pages/fake_phpmyadmin.html"
     )
 
-@main_bp.route("/upload")
+@main_bp.route("/upload", methods=["GET", "POST"])
 def fake_upload():
+
+    if request.method == "POST":
+
+        uploaded_file = request.files.get("file")
+
+        if uploaded_file is None:
+            return render_template(
+                "pages/fake_upload.html",
+                error="No file was submitted."
+            )
+
+        filename = uploaded_file.filename or "Unknown"
+
+        return render_template(
+            "pages/fake_upload.html",
+            message=(
+                f"File '{filename}' submitted successfully "
+                "for security inspection."
+            )
+        )
 
     return render_template(
         "pages/fake_upload.html"
@@ -192,44 +211,10 @@ def employee_profile(employee_id):
 
     )
 
-@main_bp.route("/file-upload", methods=["GET", "POST"])
-def file_upload():
-
-    if request.method == "POST":
-
-        uploaded_file = request.files.get("file")
-
-        if uploaded_file:
-
-            print(
-                f"[HONEYPOT] Upload Attempt: "
-                f"{uploaded_file.filename} "
-                f"from {request.remote_addr}"
-            )
-
-        return render_template(
-            "pages/file_upload.html",
-            success=True
-        )
-
-    return render_template(
-        "pages/file_upload.html"
-    )
-
 @main_bp.route("/secure/login", methods=["GET", "POST"])
 def secure_login():
 
     if request.method == "POST":
-
-        username = request.form.get("username")
-        password = request.form.get("password")
-
-        log_request(
-            ip=request.remote_addr,
-            method=request.method,
-            path=f"/secure/login | Username={username}",
-            user_agent=request.headers.get("User-Agent")
-        )
 
         return render_template(
             "pages/secure_login.html",
@@ -268,3 +253,4 @@ def fake_env():
 @main_bp.route("/backup.zip")
 def fake_backup():
     return render_template("pages/fake_backup.html")
+

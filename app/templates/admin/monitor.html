@@ -31,63 +31,124 @@
 
         </div>
 
-        <table class="security-table">
+                <div class="dashboard-cards monitor-stats">
 
-            <thead>
+                    <div class="dashboard-card">
+                        <h2>🔴 {{ high_risk }}</h2>
+                        <p>High Risk</p>
+                    </div>
 
-                <tr>
+                    <div class="dashboard-card">
+                        <h2>🟠 {{ medium_risk }}</h2>
+                        <p>Medium Risk</p>
+                    </div>
 
-                    <th>Time</th>
-                    <th>IP Address</th>
-                    <th>Method</th>
-                    <th>URL</th>
-                    <th>Risk</th>
-                    <th>Attack Type</th>
-                    <th>User Agent</th>
+                    <div class="dashboard-card">
+                        <h2>🟢 {{ normal_requests }}</h2>
+                        <p>Normal Requests</p>
+                    </div>
 
-                </tr>
+                    <div class="dashboard-card">
+                        <h2>📡 {{ request_logs|length }}</h2>
+                        <p>Total Requests</p>
+                    </div>
 
-            </thead>
+                </div>
 
-            <tbody>
+        <div class="security-table-wrapper">
 
-                {% for log in request_logs|reverse %}
+            <table class="security-table">
 
-                <tr>
+                <thead>
 
-                    <td>{{ log.time }}</td>
+                    <tr>
 
-                    <td>{{ log.ip }}</td>
+                        <th>Time</th>
+                        <th>IP Address</th>
+                        <th>Method</th>
+                        <th>URL</th>
+                        <th>Risk</th>
+                        <th>Attack Type</th>
+                        <th>User Agent</th>
+                        <th>Status</th>
 
-                    <td>{{ log.method }}</td>
+                    </tr>
 
-                    <td>{{ log.path }}</td>
+                </thead>
 
-                    <td>
+                <tbody>
 
-                        {% if log.risk == "High" %}
+                    {% for log in request_logs|reverse %}
 
-                            🔴 <strong>{{ log.risk }}</strong>
+                    <tr>
 
-                        {% else %}
+                        <td>{{ log.time }}</td>
 
-                            🟢 {{ log.risk }}
+                        <td>{{ log.ip }}</td>
 
-                        {% endif %}
+                        <td>{{ log.method }}</td>
 
-                    </td>
+                        <td class="log-path">
+                            {{ log.path }}
+                        </td>
 
-                    <td>{{ log.attack }}</td>
+                        <td>
 
-                    <td>{{ log.user_agent }}</td>
+                            {% if log.risk == "High" %}
 
-                </tr>
+                                🔴 <strong>{{ log.risk }}</strong>
 
-                {% endfor %}
+                            {% elif log.risk == "Medium" %}
 
-            </tbody>
+                                🟠 <strong>{{ log.risk }}</strong>
 
-        </table>
+                            {% else %}
+
+                                🟢 {{ log.risk }}
+
+                            {% endif %}
+
+                        </td>
+
+                        <td>{{ log.attack }}</td>
+
+                        <td class="user-agent">
+                            {{ log.user_agent }}
+                        </td>
+
+                        <td>
+
+                            {% if log.risk == "High" %}
+
+                                <span class="security-status status-high">
+                                    🔴 DETECTED
+                                </span>
+
+                            {% elif log.risk == "Medium" %}
+
+                                <span class="security-status status-medium">
+                                    🟠 MONITORING
+                                </span>
+
+                            {% else %}
+
+                                <span class="security-status status-low">
+                                    🟢 NORMAL
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
 
     </div>
 

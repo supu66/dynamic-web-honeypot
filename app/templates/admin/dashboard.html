@@ -39,7 +39,7 @@
 
             <div class="dashboard-card">
                 <h2>{{ security_stats.attacks_today }}</h2>
-                <p>Today's Attacks</p>
+                <p>Total Requests</p>
             </div>
 
             <div class="dashboard-card">
@@ -48,13 +48,13 @@
             </div>
 
             <div class="dashboard-card">
-                <h2>{{ security_stats.blocked_ips }}</h2>
-                <p>Blocked IPs</p>
+                <h2>{{ security_stats.high_risk }}</h2>
+                <p>High Risk Requests</p>
             </div>
 
             <div class="dashboard-card">
-                <h2>{{ security_stats.alerts }}</h2>
-                <p>Security Alerts</p>
+                <h2>{{ security_stats.honeypot_hits }}</h2>
+                <p>Honeypot Hits</p>
             </div>
 
         </div>
@@ -109,6 +109,36 @@
 
         </table>
 
+        <h2 style="margin-top:40px;">
+            Attack Breakdown
+        </h2>
+
+        <div class="dashboard-cards">
+
+            {% for attack, count in attack_summary.items() %}
+
+            <div class="dashboard-card">
+                <div class="attack-card-icon">
+                    🛡️
+                </div>
+
+                <div class="attack-card-info">
+
+                    <h3>{{ attack }}</h3>
+
+                    <strong>{{ count }}</strong>
+
+                    <span>
+                        detected
+                    </span>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
 
         <h2 style="margin-top:40px;">
             Honeypot Attack Logs
@@ -120,10 +150,12 @@
 
                 <tr>
 
+                    <th>Time</th>
                     <th>IP Address</th>
-                    <th>Attack</th>
+                    <th>Method</th>
+                    <th>Path</th>
+                    <th>Attack Type</th>
                     <th>Risk</th>
-                    <th>Status</th>
 
                 </tr>
 
@@ -131,17 +163,59 @@
 
             <tbody>
 
-                {% for attack in attack_logs %}
+                {% for attack in attack_logs|reverse %}
 
                 <tr>
 
-                    <td>{{ attack.ip }}</td>
+                    <td>
+                        {{ attack.time }}
+                    </td>
 
-                    <td>{{ attack.attack }}</td>
+                    <td>
+                        {{ attack.ip }}
+                    </td>
 
-                    <td>{{ attack.risk }}</td>
+                    <td>
+                        {{ attack.method }}
+                    </td>
 
-                    <td>{{ attack.status }}</td>
+                    <td>
+                        {{ attack.path }}
+                    </td>
+
+                    <td>
+                        {{ attack.attack }}
+                    </td>
+
+                    <td>
+
+                        {% if attack.risk == "High" %}
+
+                            🔴 <strong>High</strong>
+
+                        {% elif attack.risk == "Medium" %}
+
+                            🟠 <strong>Medium</strong>
+
+                        {% else %}
+
+                            🟢 Low
+
+                        {% endif %}
+
+                    </td>
+
+                </tr>
+
+                {% else %}
+
+                <tr>
+
+                    <td colspan="6" style="text-align:center;">
+
+                        No honeypot attacks detected yet.
+
+                    </td>
 
                 </tr>
 
@@ -155,4 +229,6 @@
 
 </section>
 
-{% endblock %}
+{% endblock %} 
+
+
